@@ -6,8 +6,8 @@ describe("O jogo deve permitir que o jogador", () => {
   let gameEngine;
 
   beforeAll(() => {
-    let test_dictionary = new TestDictionaryAdapter();
-    Config.setDictionaryAdapter(test_dictionary);
+    const testDictionary = new TestDictionaryAdapter();
+    Config.setDictionaryAdapter(testDictionary);
   });
 
   beforeEach(() => {

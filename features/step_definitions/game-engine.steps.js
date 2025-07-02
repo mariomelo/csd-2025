@@ -9,9 +9,8 @@ let initialGameState;
 let currentGameState;
 
 Given("que a palavra secreta é {string}", function (palavra) {
-  let test_dictionary = new TestDictionaryAdapter();
-  test_dictionary.setCurrentWord(palavra);
-  Config.setDictionaryAdapter(test_dictionary);
+  const testDictionary = new TestDictionaryAdapter(palavra);
+  Config.setDictionaryAdapter(testDictionary);
 });
 
 Given("que o jogo foi iniciado", function () {

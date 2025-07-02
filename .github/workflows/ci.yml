@@ -41,3 +41,13 @@ jobs:
         flags: unittests
         name: codecov-umbrella
 
+    - name: Upload test reports as artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-reports
+        path: |
+          coverage/
+          reports/
+        retention-days: 30
+
