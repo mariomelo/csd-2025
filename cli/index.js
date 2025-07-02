@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 const readlineSync = require("readline-sync");
 const GameEngine = require("../src/domain/game-engine");
-const BaseDictionary = require("../src/adapters/dictionary/base_dictionary");
+const BaseDictionary = require("../src/adapters/dictionary/base-dictionary");
 
 class GameCLI {
   constructor() {
@@ -42,7 +42,7 @@ class GameCLI {
   play() {
     this.displayWelcome();
 
-    let gameState = this.gameEngine.start_game();
+    let gameState = this.gameEngine.startGame();
 
     while (gameState.status === "RUNNING") {
       this.displayGameState(gameState);
@@ -51,7 +51,7 @@ class GameCLI {
         .question(chalk.blue("\n🔤 Digite uma letra: "))
         .toLowerCase();
 
-      gameState = this.gameEngine.guess_letter(gameState, letter);
+      gameState = this.gameEngine.guessLetter(gameState, letter);
     }
 
     this.displayGameState(gameState);

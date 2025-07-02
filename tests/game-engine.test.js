@@ -1,6 +1,6 @@
 const GameEngine = require("../src/domain/game-engine");
 const Config = require("../src/adapters/config");
-const TestDictionaryAdapter = require("./helpers/test_dictionary");
+const TestDictionaryAdapter = require("./helpers/test-dictionary");
 
 describe("O jogo deve permitir que o jogador", () => {
   let gameEngine;
@@ -16,7 +16,7 @@ describe("O jogo deve permitir que o jogador", () => {
 
   describe("inicie jogo", () => {
     it("e deve retornar o estado inicial do jogo", () => {
-      const gameState = gameEngine.start_game();
+      const gameState = gameEngine.startGame();
 
       expect(gameState).toHaveProperty("status", "RUNNING");
       expect(gameState).toHaveProperty("word");
@@ -31,10 +31,10 @@ describe("O jogo deve permitir que o jogador", () => {
 
   describe("faça um palpite errado", () => {
     it("e deve diminuir vidas e adicionar letra aos palpites quando letra errada é tentada", () => {
-      const initialState = gameEngine.start_game();
+      const initialState = gameEngine.startGame();
       const wrongLetter = "r";
 
-      const updatedState = gameEngine.guess_letter(initialState, wrongLetter);
+      const updatedState = gameEngine.guessLetter(initialState, wrongLetter);
 
       expect(updatedState.lives).toBe(initialState.lives - 1);
       expect(updatedState.guesses).toContain(wrongLetter);

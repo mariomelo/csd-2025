@@ -2,12 +2,12 @@
 // Este é um port na arquitetura hexagonal - define o contrato
 
 class GameEnginePort {
-  start_game() {
-    throw new Error('Method start_game must be implemented');
+  startGame() {
+    throw new Error('Method startGame must be implemented');
   }
 
-  guess_letter(game_status, letter) {
-    throw new Error('Method guess_letter must be implemented');
+  guessLetter(gameStatus, letter) {
+    throw new Error('Method guessLetter must be implemented');
   }
 }
 

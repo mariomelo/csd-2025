@@ -1,7 +1,7 @@
 const DictionaryPort = require("../../ports/dictionary-port");
 
 class BaseDictionary extends DictionaryPort {
-  get_random_word() {
+  getRandomWord() {
     return "placeholder";
   }
 }

@@ -1,14 +1,14 @@
 const DictionaryPort = require("../../src/ports/dictionary-port");
 
 class TestDictionary extends DictionaryPort {
-  default_word = "casa";
+  defaultWord = "casa";
 
-  get_random_word() {
-    return this.default_word;
+  getRandomWord() {
+    return this.defaultWord;
   }
 
-  set_current_word(word) {
-    this.default_word = word;
+  setCurrentWord(word) {
+    this.defaultWord = word;
   }
 }
 

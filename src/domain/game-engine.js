@@ -2,9 +2,9 @@ const GameEnginePort = require("../ports/game-engine-port");
 const Config = require("../adapters/config");
 
 class GameEngine extends GameEnginePort {
-  start_game() {
+  startGame() {
     const dictionary = Config.getCurrentDictionaryAdapter();
-    const word = dictionary.get_random_word();
+    const word = dictionary.getRandomWord();
 
     return {
       status: "RUNNING",
@@ -19,8 +19,17 @@ class GameEngine extends GameEnginePort {
     };
   }
 
-  guess_letter(game_state, letter) {
-    return game_state;
+  guessLetter(gameState, letter) {
+    if (gameState.word.toLowerCase().includes(letter.toLowerCase())) {
+      return gameState;
+    } else {
+      return {
+        ...gameState,
+        lives: gameState.lives - 1,
+        guesses: [...gameState.guesses, letter],
+        message: letter + " não está na palavra"
+      };
+    }
   }
 }
 
