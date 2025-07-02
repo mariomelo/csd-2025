@@ -17,16 +17,7 @@ class GameEngine extends GameEnginePort {
   }
 
   guessLetter(gameState, letter) {
-    if (gameState.word.toLowerCase().includes(letter.toLowerCase())) {
       return gameState;
-    } else {
-      return {
-        ...gameState,
-        lives: gameState.lives - 1,
-        guesses: [...gameState.guesses, letter],
-        message: letter + " não está na palavra"
-      };
-    }
   }
 }
 
