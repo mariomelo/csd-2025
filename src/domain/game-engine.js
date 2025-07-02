@@ -10,10 +10,7 @@ class GameEngine extends GameEnginePort {
       status: "RUNNING",
       word: word,
       lives: 6,
-      display_word: word
-        .split("")
-        .map(() => "_")
-        .join(" "),
+      display_word: word,
       guesses: [],
       message: "Adivinhe uma letra",
     };
