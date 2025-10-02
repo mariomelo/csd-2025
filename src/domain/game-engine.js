@@ -38,18 +38,10 @@ class GameEngine extends GameEnginePort {
   }
 
   guessLetter(gameState, letter) {
-    if (gameState.word.indexOf(letter) == -1) {
-      return {...gameState,
-        lives: gameState.lives - 1,
-        guesses: [...gameState.guesses, letter],
-        message: `A letra "${letter}" não está na palavra.`,
-      }
-    } else {
-      return this.updateDisplayWord({...gameState,
-        display_word: this.getDisplayWord(gameState),
-        guesses: [...gameState.guesses, letter],
-        message: `Você acertou a letra "${letter}".`,
-      })
+    return {...gameState,
+      lives: gameState.lives - 1,
+      guesses: [...gameState.guesses, letter],
+      message: `A letra "${letter}" não está na palavra.`,
     }
   }
 }
