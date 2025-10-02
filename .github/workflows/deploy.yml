@@ -44,7 +44,7 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "lib/engine/*"
-        target: "/home/melomario/projetos/hangman-web/lib/engine/"
+        target: "/home/melomario/projects/hangman-web/lib/engine/"
         strip_components: 2
 
     - name: Deployment Success
