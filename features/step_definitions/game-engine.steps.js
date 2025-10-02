@@ -23,6 +23,10 @@ When("eu palpito a letra {string}", function (letra) {
   currentGameState = gameEngine.guessLetter(currentGameState, letra);
 });
 
+Then('meu número de vidas deve permanecer o mesmo', function () {
+  assert.strictEqual(currentGameState.lives, initialGameState.lives);
+});
+
 Then("meu número de vidas deve diminuir em {int}", function (livesDecrease) {
   assert.strictEqual(
     currentGameState.lives,
@@ -52,3 +56,9 @@ Then(
     }
   },
 );
+
+Then('as letras {string} devem ser adicionadas aos meus palpites', function (letras) {
+  letters.forEach(letter => {
+    assert(currentGameState.guesses.includes(letter));
+  });
+});

@@ -1,12 +1,16 @@
-const DictionaryPort = require("../../src/ports/dictionary-port");
+const DictionaryPort = require('../../lib/engine/ports/dictionary-port');
 
+/**
+ * TestDictionary - Dictionary adapter for testing
+ * Returns predictable words to make tests deterministic
+ */
 class TestDictionary extends DictionaryPort {
-  constructor(word = "casa") {
+  constructor(word = 'CASA') {
     super();
     this.defaultWord = word;
   }
 
-  getRandomWord() {
+  getRandomWord(difficulty) {
     return this.defaultWord;
   }
 

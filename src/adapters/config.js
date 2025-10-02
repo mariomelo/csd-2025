@@ -1,5 +1,6 @@
-const Dictionary = require("./dictionary/base-dictionary.js");
-const default_dictionary = new Dictionary();
+const BaseDictionary = require("./dictionary/base-dictionary.js");
+const AdvancedDictionary = require("./dictionary/advanced-dictionary.js");
+const default_dictionary = new BaseDictionary();
 
 let currentDictionaryAdapter = default_dictionary;
 

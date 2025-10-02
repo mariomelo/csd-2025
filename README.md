@@ -102,12 +102,8 @@ Este é um template educacional. Os alunos devem implementar:
 
 ### Configuração
 
-Use o módulo `config.js` para alternar entre adapters de dicionário:
+Use o módulo `config.js` para alternar entre adapters de dicionário.
 
-```javascript
-const config = require('./src/adapters/config');
-config.setDictionaryAdapter('default'); // ou outro adapter disponível
-```
 
 ## 📊 Cobertura de Código
 
