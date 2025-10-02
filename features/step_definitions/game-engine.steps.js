@@ -1,7 +1,7 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const assert = require("assert");
-const GameEngine = require("../../src/domain/game-engine");
-const Config = require("../../src/adapters/config");
+const GameEngine = require("../../lib/engine");
+const Config = require("../../lib/engine/config");
 const TestDictionaryAdapter = require("../../tests/helpers/test-dictionary");
 
 let gameEngine;
@@ -14,7 +14,7 @@ Given("que a palavra secreta é {string}", function (palavra) {
 });
 
 Given("que o jogo foi iniciado", function () {
-  gameEngine = new GameEngine();
+  gameEngine = GameEngine;
   initialGameState = gameEngine.startGame();
   currentGameState = { ...initialGameState };
 });

@@ -1,12 +1,10 @@
 const chalk = require("chalk");
 const readlineSync = require("readline-sync");
-const GameEngine = require("../src/domain/game-engine");
-const BaseDictionary = require("../src/adapters/dictionary/base-dictionary");
+const GameEngine = require("../lib/engine");
 
 class GameCLI {
   constructor() {
-    this.gameEngine = new GameEngine();
-    this.dictionary = new BaseDictionary();
+    this.gameEngine = GameEngine;
   }
 
   displayWelcome() {
