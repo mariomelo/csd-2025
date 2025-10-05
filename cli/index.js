@@ -1,27 +1,29 @@
 const chalk = require("chalk");
 const readlineSync = require("readline-sync");
 const GameEngine = require("../lib/engine");
+const I18n = require("./i18n");
 
 class GameCLI {
-  constructor() {
+  constructor(locale = "it") {
     this.gameEngine = GameEngine;
+    this.i18n = new I18n(locale);
   }
 
   displayWelcome() {
-    console.log(chalk.blue.bold("\n🎯 BEM-VINDO AO JOGO DA FORCA! 🎯\n"));
-    console.log(chalk.yellow("Adivinhe a palavra secreta letra por letra!"));
-    console.log(chalk.gray("Digite uma letra por vez e pressione ENTER\n"));
+    console.log(chalk.blue.bold(this.i18n.t("welcome")));
+    console.log(chalk.yellow(this.i18n.t("instruction")));
+    console.log(chalk.gray(this.i18n.t("inputHint")));
   }
 
   displayGameState(gameState) {
     console.log(
-      chalk.cyan("\n📝 Palavra: ") + chalk.bold(gameState.display_word),
+      chalk.cyan("\n" + this.i18n.t("word")) + chalk.bold(gameState.display_word),
     );
-    console.log(chalk.red("❤️  Vidas restantes: ") + gameState.lives);
+    console.log(chalk.red(this.i18n.t("lives")) + gameState.lives);
 
     if (gameState.guesses.length > 0) {
       console.log(
-        chalk.gray("🔤 Letras tentadas: ") + gameState.guesses.join(", "),
+        chalk.gray(this.i18n.t("guesses")) + gameState.guesses.join(", "),
       );
     }
 
@@ -30,10 +32,10 @@ class GameCLI {
 
   displayGameOver(gameState) {
     if (gameState.status === "WON") {
-      console.log(chalk.green.bold("\n🎉 PARABÉNS! VOCÊ GANHOU! 🎉"));
+      console.log(chalk.green.bold(this.i18n.t("won")));
     } else if (gameState.status === "LOST") {
-      console.log(chalk.red.bold("\n💀 GAME OVER! VOCÊ PERDEU! 💀"));
-      console.log(chalk.yellow("A palavra era: ") + chalk.bold(gameState.word));
+      console.log(chalk.red.bold(this.i18n.t("lost")));
+      console.log(chalk.yellow(this.i18n.t("theWordWas")) + chalk.bold(gameState.word));
     }
   }
 
@@ -46,7 +48,7 @@ class GameCLI {
       this.displayGameState(gameState);
 
       const letter = readlineSync
-        .question(chalk.blue("\n🔤 Digite uma letra: "))
+        .question(chalk.blue(this.i18n.t("promptLetter")))
         .toLowerCase();
 
       gameState = this.gameEngine.guessLetter(gameState, letter);

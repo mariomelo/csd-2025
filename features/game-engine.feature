@@ -1,17 +1,17 @@
-#language: pt
+#language: it
 
-Funcionalidade: Motor do Jogo - Palpitar Letra
-  Como um jogador
-  Eu quero palpitar letras no jogo da forca
-  Para que eu possa tentar descobrir a palavra secreta
+Funzionalità: Motore del Gioco - Indovinare Lettera
+  Come giocatore
+  Voglio indovinare lettere nel gioco dell'impiccato
+  In modo da poter scoprire la parola segreta
 
-  Contexto:
-    Dado que a palavra secreta é "scrum"
-    E que o jogo foi iniciado
+  Contesto:
+    Data la parola segreta "scrum"
+    E il gioco è stato avviato
 
-  Cenário: Jogador faz um palpite errado
-    Quando eu palpito a letra "z"
-    Então meu número de vidas deve diminuir em 1
-    # E a letra "z" deve ser adicionada aos meus palpites
-    # E eu devo ver uma mensagem dizendo que a letra não está na palavra
-    Mas o status do jogo deve permanecer "RUNNING" se eu tiver vidas restantes
+  Scenario: Il giocatore fa un tentativo sbagliato
+    Quando indovino la lettera "z"
+    Allora il mio numero di vite dovrebbe diminuire di 1
+    # E la lettera "z" dovrebbe essere aggiunta ai miei tentativi
+    # E dovrei vedere un messaggio che dice che la lettera non è nella parola
+    Ma lo stato del gioco dovrebbe rimanere "RUNNING" se ho vite rimanenti
