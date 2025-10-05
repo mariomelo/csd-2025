@@ -2,7 +2,9 @@ name: Deploy Engine to Server
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - 'group*'
     paths:
       - 'lib/engine/**'
 
@@ -32,20 +34,33 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
+    # Só faz deploy se for um branch de grupo (não faz deploy do main)
+    if: startsWith(github.ref, 'refs/heads/group')
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Extract group name from branch
+      id: extract_group
+      run: |
+        BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+        echo "group=$BRANCH_NAME" >> $GITHUB_OUTPUT
+        echo "Deploying branch: $BRANCH_NAME"
+
     - name: Deploy Engine to Server via SCP
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
+        username: csd
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "lib/engine/*"
-        target: "/home/melomario/projects/hangman-web/lib/engine/"
+        target: "/home/csd/${{ steps.extract_group.outputs.group }}/lib/engine/"
         strip_components: 2
 
     - name: Deployment Success
-      run: echo "Engine deployed successfully to ${{ secrets.SERVER_HOST }}"
+      run: |
+        echo "✅ Engine deployed successfully to ${{ secrets.SERVER_HOST }}"
+        echo "📦 Group: ${{ steps.extract_group.outputs.group }}"
+        echo "📁 Path: /home/csd/${{ steps.extract_group.outputs.group }}/lib/engine/"
+        echo "🔄 Application will reload automatically"
