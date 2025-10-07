@@ -7,6 +7,8 @@ class GameCLI {
   constructor(locale = "it") {
     this.gameEngine = GameEngine;
     this.i18n = new I18n(locale);
+    this.startTime = null;
+    this.endTime = null;
   }
 
   displayWelcome() {
@@ -21,6 +23,11 @@ class GameCLI {
         chalk.bold(gameState.display_word)
     );
     console.log(chalk.red(this.i18n.t("lives")) + gameState.lives);
+
+    if (this.startTime) {
+      const elapsedTime = Math.floor((Date.now() - this.startTime) / 1000);
+      console.log(chalk.magenta(this.i18n.t("time")) + elapsedTime + "s");
+    }
 
     if (gameState.guesses.length > 0) {
       console.log(
@@ -42,9 +49,26 @@ class GameCLI {
     }
   }
 
+  selectLanguage() {
+    const language = readlineSync
+      .question(chalk.blue(this.i18n.t("promptLanguage")))
+      .toLowerCase();
+
+    const localeMap = {
+      it: "it",
+      pt: "pt_br",
+    };
+
+    if (localeMap[language]) {
+      this.i18n.setLocale(localeMap[language]);
+    }
+  }
+
   play() {
+    this.selectLanguage();
     this.displayWelcome();
 
+    this.startTime = Date.now();
     let gameState = this.gameEngine.startGame();
 
     while (gameState.status === "RUNNING") {
@@ -53,11 +77,16 @@ class GameCLI {
       const letter = readlineSync
         .question(chalk.blue(this.i18n.t("promptLetter")))
         .toLowerCase();
+
       gameState = this.gameEngine.guessLetter(gameState, letter);
     }
 
+    this.endTime = Date.now();
     this.displayGameState(gameState);
     this.displayGameOver(gameState);
+
+    const totalTime = Math.floor((this.endTime - this.startTime) / 1000);
+    console.log(chalk.cyan(`\n${this.i18n.t("time")}${totalTime}s`));
   }
 }
 
