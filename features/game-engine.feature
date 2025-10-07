@@ -9,6 +9,13 @@ Funzionalità: Motore del Gioco - Indovinare Lettera
     Data la parola segreta "scrum"
     E il gioco è stato avviato
 
+  Scenario: Il giocatore fa un tentativo corretto
+    Quando indovino la lettera "S"
+    Allora dovrei vedere un messaggio che dice "La lettera S è nella parola."
+    E il mio numero di vite dovrebbe rimanere lo stesso
+    E la lettera "S" dovrebbe essere aggiunta ai miei tentativi
+    E lo stato del gioco dovrebbe rimanere "RUNNING" se ho vite rimanenti
+
   Scenario: Il giocatore fa un tentativo sbagliato
     Quando indovino la lettera "z"
     Allora il mio numero di vite dovrebbe diminuire di 1
