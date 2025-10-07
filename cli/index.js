@@ -17,13 +17,14 @@ class GameCLI {
 
   displayGameState(gameState) {
     console.log(
-      chalk.cyan("\n" + this.i18n.t("word")) + chalk.bold(gameState.display_word),
+      chalk.cyan("\n" + this.i18n.t("word")) +
+        chalk.bold(gameState.display_word)
     );
     console.log(chalk.red(this.i18n.t("lives")) + gameState.lives);
 
     if (gameState.guesses.length > 0) {
       console.log(
-        chalk.gray(this.i18n.t("guesses")) + gameState.guesses.join(", "),
+        chalk.gray(this.i18n.t("guesses")) + gameState.guesses.join(", ")
       );
     }
 
@@ -35,7 +36,9 @@ class GameCLI {
       console.log(chalk.green.bold(this.i18n.t("won")));
     } else if (gameState.status === "LOST") {
       console.log(chalk.red.bold(this.i18n.t("lost")));
-      console.log(chalk.yellow(this.i18n.t("theWordWas")) + chalk.bold(gameState.word));
+      console.log(
+        chalk.yellow(this.i18n.t("theWordWas")) + chalk.bold(gameState.word)
+      );
     }
   }
 
@@ -50,7 +53,6 @@ class GameCLI {
       const letter = readlineSync
         .question(chalk.blue(this.i18n.t("promptLetter")))
         .toLowerCase();
-
       gameState = this.gameEngine.guessLetter(gameState, letter);
     }
 
