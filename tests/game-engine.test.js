@@ -68,6 +68,18 @@ describe("GameEngine Interface", () => {
       expect(updatedState.lives).toBe(0);
       expect(updatedState.status).toBe("LOST");
     });
+    it("should verify won status", () => {
+      const initialState = gameEngine.startGame();
+
+      let updatedState = gameEngine.guessLetter(initialState, "a");
+      updatedState = gameEngine.guessLetter(updatedState, "c");
+      updatedState = gameEngine.guessLetter(updatedState, "s");
+
+      expect(updatedState).toHaveProperty("status");
+      expect(updatedState).toHaveProperty("guesses");
+      expect(updatedState.lives).toBe(2);
+      expect(updatedState.status).toBe("WON");
+    });
   });
 
   describe("version()", () => {
