@@ -44,7 +44,7 @@ describe("GameEngine Interface", () => {
 			expect(updatedState.status).toBe("RUNNING");
 			expect(updatedState.lives).toBe(6);
 			expect(updatedState.display_word).toBe("_ A _ A");
-      expect(updatedState.message).toBe("La lettera ${letter} è nella parola.");
+      expect(updatedState.message).toBe("La lettera A è nella parola.");
 		});
 	});
 
@@ -53,6 +53,25 @@ describe("GameEngine Interface", () => {
 			const initialState = gameEngine.startGame();
       const stateOne = gameEngine.guessLetter(initialState, "C");
 			const stateTwo = gameEngine.guessLetter(stateOne, "A");
+      const stateThree = gameEngine.guessLetter(stateTwo, "S");
+
+			expect(stateThree).toHaveProperty("status");
+			expect(stateThree).toHaveProperty("guesses");
+			expect(stateThree).toHaveProperty("lives");
+			expect(stateThree).toHaveProperty("display_word");
+
+			expect(stateThree.status).toBe("WIN");
+			expect(stateThree.lives).toBe(6);
+			expect(stateThree.display_word).toBe("C A S A");
+      expect(stateThree.message).toBe("Hai indovinato la parola!");
+		});
+	});
+
+  describe("guessWordCaseInsensitive()", () => {
+		it("should go to state WIN", () => {
+			const initialState = gameEngine.startGame();
+      const stateOne = gameEngine.guessLetter(initialState, "C");
+			const stateTwo = gameEngine.guessLetter(stateOne, "a");
       const stateThree = gameEngine.guessLetter(stateTwo, "S");
 
 			expect(stateThree).toHaveProperty("status");
