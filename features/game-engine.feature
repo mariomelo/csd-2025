@@ -12,6 +12,12 @@ Funzionalità: Motore del Gioco - Indovinare Lettera
   Scenario: Il giocatore fa un tentativo sbagliato
     Quando indovino la lettera "z"
     Allora il mio numero di vite dovrebbe diminuire di 1
-    # E la lettera "z" dovrebbe essere aggiunta ai miei tentativi
-    # E dovrei vedere un messaggio che dice che la lettera non è nella parola
+    E la lettera "z" dovrebbe essere aggiunta ai miei tentativi
+    E dovrei vedere un messaggio che dice "La lettera Z non è nella parola."
     Ma lo stato del gioco dovrebbe rimanere "RUNNING" se ho vite rimanenti
+
+  Scenario: Il giocatore scrive più di una lettera
+    Quando indovino la lettera "da"
+    Allora dovrei vedere un messaggio che dice "Inserisci una lettera"
+    E il mio numero di vite dovrebbe rimanere lo stesso
+    E lo stato del gioco dovrebbe rimanere "RUNNING" se ho vite rimanenti
