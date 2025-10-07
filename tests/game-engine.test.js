@@ -91,7 +91,7 @@ describe("GameEngine Interface", () => {
 			expect(stateThree).toHaveProperty("display_word");
 			expect(stateThree).toHaveProperty("timer");
 
-			expect(stateThree.status).toBe("WIN");
+			expect(stateThree.status).toBe("WON");
 			expect(stateThree.lives).toBe(6);
 			expect(stateThree.display_word).toBe("C A S A");
 			expect(stateThree.message).toBe("Hai indovinato la parola!");
@@ -111,7 +111,7 @@ describe("GameEngine Interface", () => {
 			expect(stateThree).toHaveProperty("display_word");
 			expect(stateThree).toHaveProperty("timer");
 
-			expect(stateThree.status).toBe("WIN");
+			expect(stateThree.status).toBe("WON");
 			expect(stateThree.lives).toBe(6);
 			expect(stateThree.display_word).toBe("C A S A");
 			expect(stateThree.message).toBe("Hai indovinato la parola!");
