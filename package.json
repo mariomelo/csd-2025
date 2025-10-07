@@ -8,10 +8,15 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:bdd": "mkdir -p reports && cucumber-js",
+    "test:bdd": "cucumber-js",
     "test:all": "npm run test && npm run test:bdd"
   },
-  "keywords": ["forca", "game", "education", "agile"],
+  "keywords": [
+    "forca",
+    "game",
+    "education",
+    "agile"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -31,6 +36,10 @@
       "!**/node_modules/**"
     ],
     "coverageDirectory": "coverage",
-    "coverageReporters": ["text", "lcov", "html"]
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
   }
 }

@@ -23,29 +23,41 @@ When("indovino la lettera {string}", function (lettera) {
   currentGameState = gameEngine.guessLetter(currentGameState, lettera);
 });
 
-Then('il mio numero di vite dovrebbe rimanere lo stesso', function () {
+When("inserisco le lettere {string}", function (lettera) {
+  currentGameState = gameEngine.guessLetter(currentGameState, lettera);
+});
+
+Then("il mio numero di vite dovrebbe rimanere lo stesso", function () {
   assert.strictEqual(currentGameState.lives, initialGameState.lives);
 });
 
-Then("il mio numero di vite dovrebbe diminuire di {int}", function (livesDecrease) {
-  assert.strictEqual(
-    currentGameState.lives,
-    initialGameState.lives - livesDecrease,
-  );
-});
+Then(
+  "il mio numero di vite dovrebbe diminuire di {int}",
+  function (livesDecrease) {
+    assert.strictEqual(
+      currentGameState.lives,
+      initialGameState.lives - livesDecrease
+    );
+  }
+);
 
 Then(
   "la lettera {string} dovrebbe essere aggiunta ai miei tentativi",
   function (letter) {
-    throw new Error("TODO: Implementare questa funcionalità");
-  },
+    assert.ok(currentGameState.guesses.includes(letter));
+  }
 );
 
 Then(
   "dovrei vedere un messaggio che dice che la lettera non è nella parola",
   function () {
-    throw new Error("TODO: Implementare questa funcionalità");
-  },
+    assert.strictEqual(
+      currentGameState.message,
+      `La lettera ${
+        currentGameState.guesses[currentGameState.guesses.length - 1]
+      } non è nella parola.`
+    );
+  }
 );
 
 Then(
@@ -54,9 +66,22 @@ Then(
     if (currentGameState.lives > 0) {
       assert.strictEqual(currentGameState.status, status);
     }
-  },
+  }
 );
 
-Then('le lettere {string} dovrebbero essere aggiunte ai miei tentativi', function (lettere) {
-  throw new Error("TODO: Implementare questa funcionalità");
-});
+Then(
+  "le lettere {string} dovrebbero essere aggiunte ai miei tentativi",
+  function (lettere) {
+    throw new Error("TODO: Implementare questa funcionalità");
+  }
+);
+
+Then(
+  "dovrei vedere un messaggio che dice che posso inserire una sola lettera",
+  function () {
+    assert.strictEqual(
+      currentGameState.message,
+      "Puoi inserire solo una lettera."
+    );
+  }
+);
