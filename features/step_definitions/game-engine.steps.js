@@ -50,7 +50,7 @@ Then("dovrei vedere un messaggio che dice {string}", function (message) {
 });
 
 Then(
-	"dovrei vedere un messaggio che dice che la lettera non è nella parola",
+	"dovrei vedere un messaggio che dice che la lettera non é nella parola",
 	function () {
 		throw new Error("TODO: Implementare questa funcionalità");
 	}
