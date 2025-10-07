@@ -8,6 +8,9 @@ class TestDictionary extends DictionaryPort {
   constructor(word = 'CASA') {
     super();
     this.defaultWord = word;
+    this.definitions = {
+      'CASA': 'Una struttura abitativa per una famiglia o un individuo.',
+    }
   }
 
   getRandomWord(difficulty) {

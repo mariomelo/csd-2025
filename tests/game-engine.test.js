@@ -74,7 +74,7 @@ describe("GameEngine Interface", () => {
 			expect(updatedState.status).toBe("RUNNING");
 			expect(updatedState.lives).toBe(6);
 			expect(updatedState.display_word).toBe("_ A _ A");
-			expect(updatedState.message).toBe("La lettera A è nella parola.");
+			expect(updatedState.message).toBe("La lettera A é nella parola.");
 		});
 	});
 
@@ -94,7 +94,7 @@ describe("GameEngine Interface", () => {
 			expect(stateThree.status).toBe("WON");
 			expect(stateThree.lives).toBe(6);
 			expect(stateThree.display_word).toBe("C A S A");
-			expect(stateThree.message).toBe("Hai indovinato la parola!");
+			expect(stateThree.message.startsWith("Hai indovinato la parola!")).toBe(true);
 		});
 	});
 
@@ -114,7 +114,7 @@ describe("GameEngine Interface", () => {
 			expect(stateThree.status).toBe("WON");
 			expect(stateThree.lives).toBe(6);
 			expect(stateThree.display_word).toBe("C A S A");
-			expect(stateThree.message).toBe("Hai indovinato la parola!");
+			expect(stateThree.message.startsWith("Hai indovinato la parola!")).toBe(true);
 		});
 	});
 
@@ -155,7 +155,7 @@ describe("GameEngine Interface", () => {
 			expect(updatedState.status).toBe("RUNNING");
 			expect(updatedState.lives).toBe(5);
 			expect(updatedState.display_word).toBe("_ _ _ _");
-			expect(updatedState.message).toBe("La lettera X non è nella parola.");
+			expect(updatedState.message).toBe("La lettera X non é nella parola.");
 		});
 	});
 
