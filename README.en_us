@@ -128,3 +128,63 @@ The project is configured with GitHub Actions that:
 ---
 
 **Note**: This is an educational project. The implementation is intentionally incomplete to allow hands-on learning.
+
+---
+
+## 🎓 Trainer Guide
+
+This section is intended for the instructor running the course.
+
+### Caddy Configuration (reverse proxy)
+
+Add to your `Caddyfile`:
+
+```
+group0.mariomelo.com {
+    reverse_proxy localhost:11000
+}
+
+group1.mariomelo.com {
+    reverse_proxy localhost:11001
+}
+
+group2.mariomelo.com {
+    reverse_proxy localhost:11002
+}
+
+group3.mariomelo.com {
+    reverse_proxy localhost:11003
+}
+```
+
+After editing, reload Caddy:
+```bash
+sudo systemctl reload caddy
+```
+
+### Resetting Between Classes
+
+#### 1. Reset branches on GitHub
+
+Run in your local repository to wipe the students' history and restore the template:
+
+```bash
+for group in group0 group1 group2 group3; do
+  git checkout $group
+  git reset --hard origin/main
+  git push --force origin $group
+done
+git checkout main
+```
+
+#### 2. Reset files on the server
+
+Restores the original `hangman-web` stubs on each instance:
+
+```bash
+# As root on the server:
+for group in group0 group1 group2 group3; do
+  sudo -u csd bash -c "cd /home/csd/$group && git reset --hard HEAD"
+  sudo systemctl restart hangman-$group
+done
+```
