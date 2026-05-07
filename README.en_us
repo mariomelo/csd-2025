@@ -1,0 +1,130 @@
+# 🎯 Hangman Game - CSD 2025
+
+Educational template for teaching agile software development concepts.
+
+## 📋 About the Project
+
+This is a hangman game template project created to teach agile development concepts, including:
+
+- ✅ Unit testing with Jest
+- ✅ BDD testing with Cucumber
+- ✅ Continuous Integration with GitHub Actions
+- ✅ Code coverage
+- ✅ Hexagonal Architecture
+- ✅ Modular configuration
+
+## 🚀 Available Commands
+
+### Installation
+```bash
+npm install
+```
+
+### Run the Game
+```bash
+npm start
+```
+
+### Tests
+
+**Run all tests:**
+```bash
+npm run test:all
+```
+
+**Unit tests (Jest):**
+```bash
+npm test
+```
+
+**Tests with watcher (development):**
+```bash
+npm run test:watch
+```
+
+**Tests with code coverage:**
+```bash
+npm run test:coverage
+```
+
+**BDD Tests (Cucumber):**
+```bash
+npm run test:bdd
+```
+
+
+## 📁 Project Structure
+
+```
+csd-2025/
+├── .github/workflows/     # GitHub Actions (CI/CD)
+├── src/
+│   ├── domain/           # Business logic (Game Engine)
+│   ├── adapters/         # Adapters (Dictionary, Config)
+│   └── ports/            # Interfaces (Contracts)
+├── tests/                # Unit tests (Jest)
+├── features/             # BDD tests (Cucumber)
+├── cli/                  # Command-line interface
+└── reports/              # Test reports
+```
+
+## 🎮 How to Play
+
+1. Run `npm start`
+2. The game will show a hidden word with underscores
+3. Type a letter and press ENTER
+4. Try to guess the word before you run out of lives!
+
+## 🛠️ For Developers
+
+### Required Implementation
+
+This is an educational template. Students must implement:
+
+1. **Dictionary** (`src/adapters/dictionary.js`)
+   - Reading the words file
+   - Random word selection
+
+2. **Game Engine** (`src/domain/game-engine.js`)
+   - Complete hangman game logic
+   - Input validation
+   - Game state control
+
+3. **CLI** (`cli/index.js`)
+   - Main game loop
+   - User interaction
+
+### Hexagonal Architecture
+
+- **Ports**: Interfaces that define contracts
+- **Adapters**: Specific implementations (Dictionary, Config)
+- **Domain**: Pure business logic (Game Engine)
+
+### Configuration
+
+Use the `config.js` module to switch between dictionary adapters.
+
+
+## 📊 Code Coverage
+
+After running `npm run test:coverage`, check:
+- `coverage/lcov-report/index.html` - Visual report
+- `coverage/` - Coverage data
+
+## 🔄 Continuous Integration
+
+The project is configured with GitHub Actions that:
+- Runs tests automatically on push/PR
+- Generates coverage reports
+- Uses Ubuntu and stable Node.js
+
+## 🤝 Contributing
+
+1. Implement the module features
+2. Add tests for your implementations
+3. Keep code coverage high
+4. Run `npm run test:all` before committing
+
+---
+
+**Note**: This is an educational project. The implementation is intentionally incomplete to allow hands-on learning.

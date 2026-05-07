@@ -8,26 +8,26 @@ let gameEngine;
 let initialGameState;
 let currentGameState;
 
-Given("la parola segreta {string}", function (parola) {
-  const testDictionary = new TestDictionaryAdapter(parola);
+Given("que a palavra secreta é {string}", function (palavra) {
+  const testDictionary = new TestDictionaryAdapter(palavra);
   Config.setDictionaryAdapter(testDictionary);
 });
 
-Given("il gioco è stato avviato", function () {
+Given("que o jogo foi iniciado", function () {
   gameEngine = GameEngine;
   initialGameState = gameEngine.startGame();
   currentGameState = { ...initialGameState };
 });
 
-When("indovino la lettera {string}", function (lettera) {
-  currentGameState = gameEngine.guessLetter(currentGameState, lettera);
+When("eu palpito a letra {string}", function (letra) {
+  currentGameState = gameEngine.guessLetter(currentGameState, letra);
 });
 
-Then('il mio numero di vite dovrebbe rimanere lo stesso', function () {
+Then('meu número de vidas deve permanecer o mesmo', function () {
   assert.strictEqual(currentGameState.lives, initialGameState.lives);
 });
 
-Then("il mio numero di vite dovrebbe diminuire di {int}", function (livesDecrease) {
+Then("meu número de vidas deve diminuir em {int}", function (livesDecrease) {
   assert.strictEqual(
     currentGameState.lives,
     initialGameState.lives - livesDecrease,
@@ -35,21 +35,21 @@ Then("il mio numero di vite dovrebbe diminuire di {int}", function (livesDecreas
 });
 
 Then(
-  "la lettera {string} dovrebbe essere aggiunta ai miei tentativi",
+  "a letra {string} deve ser adicionada aos meus palpites",
   function (letter) {
-    throw new Error("TODO: Implementare questa funcionalità");
+    throw new Error("TODO: Implementar essa funcionalidade");
   },
 );
 
 Then(
-  "dovrei vedere un messaggio che dice che la lettera non è nella parola",
+  "eu devo ver uma mensagem dizendo que a letra não está na palavra",
   function () {
-    throw new Error("TODO: Implementare questa funcionalità");
+    throw new Error("TODO: Implementar essa funcionalidade");
   },
 );
 
 Then(
-  "lo stato del gioco dovrebbe rimanere {string} se ho vite rimanenti",
+  "o status do jogo deve permanecer {string} se eu tiver vidas restantes",
   function (status) {
     if (currentGameState.lives > 0) {
       assert.strictEqual(currentGameState.status, status);
@@ -57,6 +57,6 @@ Then(
   },
 );
 
-Then('le lettere {string} dovrebbero essere aggiunte ai miei tentativi', function (lettere) {
-  throw new Error("TODO: Implementare questa funcionalità");
+Then('as letras {string} devem ser adicionadas aos meus palpites', function (letras) {
+  throw new Error("TODO: Implementar essa funcionalidade");
 });

@@ -90,6 +90,25 @@ for backup_file in "$STEP_DEFINITIONS_DIR"/*.steps.js."$TARGET_LANG"; do
   fi
 done
 
+# Processar README
+for readme_file in README.md; do
+  if [ -f "$readme_file" ]; then
+    for lang in "${AVAILABLE_LANGUAGES[@]}"; do
+      if [ ! -f "README.$lang" ]; then
+        mv "$readme_file" "README.$lang"
+        echo "📦 Salvando README anterior: README.$lang"
+        break
+      fi
+    done
+  fi
+done
+
+# Ativar README do idioma selecionado
+if [ -f "README.$TARGET_LANG" ]; then
+  mv "README.$TARGET_LANG" README.md
+  echo "✅ Ativando README: README.md ($TARGET_LANG)"
+fi
+
 echo ""
 echo "✨ Idioma alterado com sucesso para: $TARGET_LANG"
 echo ""

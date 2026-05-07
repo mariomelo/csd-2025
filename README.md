@@ -1,130 +1,130 @@
-# 🎯 Gioco dell'Impiccato - CSD 2025
+# 🎯 Jogo da Forca - CSD 2025
 
-Template educativo per l'insegnamento dello sviluppo software agile.
+Template educativo para o ensino de desenvolvimento de software ágil.
 
-## 📋 Sul Progetto
+## 📋 Sobre o Projeto
 
-Questo è un progetto template del gioco dell'impiccato creato per insegnare concetti di sviluppo agile, tra cui:
+Este é um projeto template do jogo da forca criado para ensinar conceitos de desenvolvimento ágil, incluindo:
 
-- ✅ Test unitari con Jest
-- ✅ Test BDD con Cucumber
-- ✅ Integrazione Continua con GitHub Actions
-- ✅ Copertura del codice
-- ✅ Architettura Esagonale
-- ✅ Configurazione modulare
+- ✅ Testes unitários com Jest
+- ✅ Testes BDD com Cucumber
+- ✅ Integração Contínua com GitHub Actions
+- ✅ Cobertura de código
+- ✅ Arquitetura Hexagonal
+- ✅ Configuração modular
 
-## 🚀 Comandi Disponibili
+## 🚀 Comandos Disponíveis
 
-### Installazione
+### Instalação
 ```bash
 npm install
 ```
 
-### Eseguire il Gioco
+### Executar o Jogo
 ```bash
 npm start
 ```
 
-### Test
+### Testes
 
-**Eseguire tutti i test:**
+**Executar todos os testes:**
 ```bash
 npm run test:all
 ```
 
-**Test unitari (Jest):**
+**Testes unitários (Jest):**
 ```bash
 npm test
 ```
 
-**Test con watcher (sviluppo):**
+**Testes com watcher (desenvolvimento):**
 ```bash
 npm run test:watch
 ```
 
-**Test con copertura del codice:**
+**Testes com cobertura de código:**
 ```bash
 npm run test:coverage
 ```
 
-**Test BDD (Cucumber):**
+**Testes BDD (Cucumber):**
 ```bash
 npm run test:bdd
 ```
 
 
-## 📁 Struttura del Progetto
+## 📁 Estrutura do Projeto
 
 ```
 csd-2025/
 ├── .github/workflows/     # GitHub Actions (CI/CD)
 ├── src/
-│   ├── domain/           # Logica di business (Game Engine)
-│   ├── adapters/         # Adattatori (Dictionary, Config)
-│   └── ports/            # Interfacce (Contratti)
-├── tests/                # Test unitari (Jest)
-├── features/             # Test BDD (Cucumber)
-├── cli/                  # Interfaccia a riga di comando
-└── reports/              # Report dei test
+│   ├── domain/           # Lógica de negócio (Game Engine)
+│   ├── adapters/         # Adaptadores (Dictionary, Config)
+│   └── ports/            # Interfaces (Contratos)
+├── tests/                # Testes unitários (Jest)
+├── features/             # Testes BDD (Cucumber)
+├── cli/                  # Interface de linha de comando
+└── reports/              # Relatórios de testes
 ```
 
-## 🎮 Come Giocare
+## 🎮 Como Jogar
 
-1. Eseguire `npm start`
-2. Il gioco mostrerà una parola nascosta con trattini bassi
-3. Digitare una lettera e premere INVIO
-4. Provare a indovinare la parola prima che finiscano le vite!
+1. Execute `npm start`
+2. O jogo mostrará uma palavra oculta com underscores
+3. Digite uma letra e pressione ENTER
+4. Tente adivinhar a palavra antes de acabar as vidas!
 
-## 🛠️ Per Sviluppatori
+## 🛠️ Para Desenvolvedores
 
-### Implementazione Necessaria
+### Implementação Necessária
 
-Questo è un template educativo. Gli studenti devono implementare:
+Este é um template educativo. Os alunos devem implementar:
 
 1. **Dictionary** (`src/adapters/dictionary.js`)
-   - Lettura del file delle parole
-   - Selezione casuale delle parole
+   - Leitura do arquivo de palavras
+   - Seleção aleatória de palavras
 
 2. **Game Engine** (`src/domain/game-engine.js`)
-   - Logica completa del gioco dell'impiccato
-   - Validazione degli input
-   - Controllo dello stato del gioco
+   - Lógica completa do jogo da forca
+   - Validação de entradas
+   - Controle do estado do jogo
 
 3. **CLI** (`cli/index.js`)
-   - Loop principale del gioco
-   - Interazione con l'utente
+   - Loop principal do jogo
+   - Interação com o usuário
 
-### Architettura Esagonale
+### Arquitetura Hexagonal
 
-- **Ports**: Interfacce che definiscono i contratti
-- **Adapters**: Implementazioni specifiche (Dictionary, Config)
-- **Domain**: Logica di business pura (Game Engine)
+- **Ports**: Interfaces que definem os contratos
+- **Adapters**: Implementações específicas (Dictionary, Config)
+- **Domain**: Lógica de negócio pura (Game Engine)
 
-### Configurazione
+### Configuração
 
-Utilizzare il modulo `config.js` per alternare tra gli adapter del dizionario.
+Use o módulo `config.js` para alternar entre os adapters de dicionário.
 
 
-## 📊 Copertura del Codice
+## 📊 Cobertura de Código
 
-Dopo aver eseguito `npm run test:coverage`, verificare:
-- `coverage/lcov-report/index.html` - Report visuale
-- `coverage/` - Dati di copertura
+Após executar `npm run test:coverage`, verifique:
+- `coverage/lcov-report/index.html` - Relatório visual
+- `coverage/` - Dados de cobertura
 
-## 🔄 Integrazione Continua
+## 🔄 Integração Contínua
 
-Il progetto è configurato con GitHub Actions che:
-- Esegue i test automaticamente su push/PR
-- Genera report di copertura
-- Utilizza Ubuntu e Node.js stabile
+O projeto está configurado com GitHub Actions que:
+- Executa os testes automaticamente em push/PR
+- Gera relatórios de cobertura
+- Utiliza Ubuntu e Node.js estável
 
-## 🤝 Contribuire
+## 🤝 Contribuindo
 
-1. Implementare le funzionalità dei moduli
-2. Aggiungere test per le proprie implementazioni
-3. Mantenere alta la copertura del codice
-4. Eseguire `npm run test:all` prima di fare commit
+1. Implemente as funcionalidades dos módulos
+2. Adicione testes para suas implementações
+3. Mantenha alta a cobertura de código
+4. Execute `npm run test:all` antes de fazer commit
 
 ---
 
-**Nota**: Questo è un progetto educativo. L'implementazione è intenzionalmente incompleta per consentire l'apprendimento pratico.
+**Nota**: Este é um projeto educativo. A implementação está intencionalmente incompleta para permitir o aprendizado prático.
