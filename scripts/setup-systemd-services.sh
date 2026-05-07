@@ -9,7 +9,7 @@ echo "🔧 Criando serviços systemd para cada grupo"
 echo ""
 
 GROUP_NAMES=("group0" "group1" "group2" "group3")
-BASE_PORT=3000
+BASE_PORT=11000
 
 for i in "${!GROUP_NAMES[@]}"; do
     GROUP="${GROUP_NAMES[$i]}"

@@ -9,7 +9,7 @@ echo "🔧 Clonando repositório hangman-web para cada grupo"
 echo ""
 
 GROUP_NAMES=("group0" "group1" "group2" "group3")
-BASE_PORT=3000
+BASE_PORT=11000
 
 for i in "${!GROUP_NAMES[@]}"; do
     GROUP="${GROUP_NAMES[$i]}"
@@ -19,11 +19,15 @@ for i in "${!GROUP_NAMES[@]}"; do
     echo "📦 Configurando $GROUP (porta $PORT)..."
 
     # Clonar repositório hangman-web para cada grupo
-    if [ ! -d "$GROUP_DIR" ]; then
+    if [ -d "$GROUP_DIR/.git" ] && [ -f "$GROUP_DIR/package.json" ]; then
+        echo "  ⚠️  Repositório já clonado em $GROUP_DIR, pulando clone"
+    else
+        if [ -d "$GROUP_DIR" ] && [ ! -d "$GROUP_DIR/.git" ]; then
+            echo "  ⚠️  Diretório $GROUP_DIR existe mas não é um repositório git válido. Removendo..."
+            rm -rf "$GROUP_DIR"
+        fi
         echo "  Clonando repositório hangman-web..."
         sudo -u csd git clone https://github.com/mariomelo/hangman-web.git "$GROUP_DIR"
-    else
-        echo "  ⚠️  Diretório $GROUP_DIR já existe, pulando clone"
     fi
 
     # Criar/atualizar arquivo .env com a porta
