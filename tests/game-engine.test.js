@@ -36,11 +36,28 @@ describe('GameEngine Interface', () => {
     it('should accept gameState and letter parameters', () => {
       const initialState = gameEngine.startGame();
       const updatedState = gameEngine.guessLetter(initialState, 'A');
-
+ 
       expect(updatedState).toHaveProperty('status');
       expect(updatedState).toHaveProperty('guesses');
     });
+
+    it('Deve penalizar uma tentativa inválida', () => {
+         const inicial = {
+          status: 'RUNNING',
+          word: "Pensamento",
+          lives: 6,
+          display_word: "",
+          guesses: [],
+          message: 'Indovina una lettera',
+        };
+
+        const updatedState = gameEngine.guessLetter(inicial, 'B');
+        expect(updatedState.lives).toBe(inicial.lives - 1);
+        expect(updatedState.guesses).toContain('B');
+      });
   });
+
+  
 
   describe('version()', () => {
     it('should return a version string', () => {
