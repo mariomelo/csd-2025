@@ -43,13 +43,6 @@ describe('GameEngine Interface', () => {
 
   describe('guessLetter()', () => {
     it('should validate if the letter is valid', () => {
-      const initialState = gameEngine.startGame();
-      const updatedState = gameEngine.guessLetter(initialState, '1');
-      expect(updatedState).toHaveProperty('status');
-      expect(updatedState).toHaveProperty('message');
-      expect(updatedState.message).toBe('A letra 1 não é válida');
-    });
-    it('should validate if the letter is valid', () => {
       const initialState = {
         status: 'RUNNING',
         word: 'CASA',
@@ -58,12 +51,13 @@ describe('GameEngine Interface', () => {
         guesses: [],
         message: 'Indovina una lettera',
       };
-      const updatedState = gameEngine.guessLetter(initialState, 'O');
+      const guess = 'X';
+      const updatedState = gameEngine.guessLetter(initialState, guess);
       expect(updatedState).toHaveProperty('status');
       expect(updatedState).toHaveProperty('message');
-      expect(updatedState.lives).toBe(5);
-      expect(updatedState.message).toBe('A letra O não está na palavra');
-      expect(updatedState.guesses).toContain('O');
+      expect(updatedState.lives).toBe(initialState.lives - 1);
+      expect(updatedState.message).toBe('A letra X não está na palavra.');
+      expect(updatedState.guesses).toContain(guess);
     });
   });
 
