@@ -37,7 +37,7 @@ Then("meu número de vidas deve diminuir em {int}", function (livesDecrease) {
 Then(
   "a letra {string} deve ser adicionada aos meus palpites",
   function (letter) {
-    throw new Error("TODO: Implementar essa funcionalidade");
+    assert.ok(currentGameState.guesses.includes(letter));
   },
 );
 

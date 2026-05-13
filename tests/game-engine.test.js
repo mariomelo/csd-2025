@@ -33,12 +33,12 @@ describe('GameEngine Interface', () => {
   });
 
   describe('guessLetter()', () => {
-    it('should accept gameState and letter parameters', () => {
-      const initialState = gameEngine.startGame();
-      const updatedState = gameEngine.guessLetter(initialState, 'A');
+    it('O jogo deve penalizar tentativas erradas', () => {
+      const new_game = gameEngine.startGame()
+      const updatedState = gameEngine.guessLetter(new_game, 'X');
 
-      expect(updatedState).toHaveProperty('status');
-      expect(updatedState).toHaveProperty('guesses');
+      expect(updatedState.lives).toBe(4);
+      expect(updatedState.guesses).toContain('X');
     });
   });
 
