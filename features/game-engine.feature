@@ -47,7 +47,6 @@ Cenário: Jogador faz um palpite errado
     E eu palpito a letra "n"
     E eu palpito a letra "f"
     Então meu número de vidas deve ser igual a 0
-    E as letras ["t", "z"] deve ser adicionadas aos meus palpites
     E a letra "t" deve ser adicionada aos meus palpites
     E a letra "z" deve ser adicionada aos meus palpites
     E a letra "d" deve ser adicionada aos meus palpites
