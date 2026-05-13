@@ -41,7 +41,23 @@ describe('GameEngine Interface', () => {
       expect(updatedState).toHaveProperty('guesses');
     });
 
-    it('Deve penalizar uma tentativa inválida', () => {
+    it('Deve ser case insensitive', () => {
+         const inicial = {
+          status: 'RUNNING',
+          word: "Pensamento",
+          lives: 6,
+          display_word: "",
+          guesses: [],
+          message: 'Indovina una lettera',
+        };
+
+        const updatedState = gameEngine.guessLetter(inicial, 'A');
+        console.log("state=", updatedState);
+        //expect(updatedState.lives).toBe(inicial.lives);
+        expect(updatedState.guesses).toContain('A');
+    });
+
+     it('Deve penalizar uma tentativa inválida', () => {
          const inicial = {
           status: 'RUNNING',
           word: "Pensamento",
@@ -52,9 +68,11 @@ describe('GameEngine Interface', () => {
         };
 
         const updatedState = gameEngine.guessLetter(inicial, 'B');
+        console.log("state=", updatedState);
         expect(updatedState.lives).toBe(inicial.lives - 1);
         expect(updatedState.guesses).toContain('B');
       });
+
   });
 
   
