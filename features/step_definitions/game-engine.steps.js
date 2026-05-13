@@ -66,3 +66,29 @@ Then(
     throw new Error('TODO: Implementar essa funcionalidade');
   },
 );
+
+Then('meu número de vidas não deve diminuir', function () {
+  assert.strictEqual(currentGameState.lives, initialGameState.lives);
+});
+
+Then(
+  'eu devo ver uma mensagem dizendo que a letra {string} está na palavra',
+  function (letra) {
+    assert.strictEqual(
+      currentGameState.message,
+      `A letra ${letra} está na palavra.`,
+    );
+  },
+);
+
+Then('mostrar a palavra {string}', function (string) {
+  assert.strictEqual(currentGameState.display_word, string);
+});
+
+Then('o status do jogo deve alterar para {string} se eu não tiver vidas restantes', function (string) {
+  assert.strictEqual(currentGameState.status, string);
+});
+
+Then('meu número de vidas deve ser igual a {int}', function (int) {
+  assert.strictEqual(currentGameState.lives, int);
+});
