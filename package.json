@@ -5,6 +5,8 @@
   "main": "cli/index.js",
   "scripts": {
     "start": "node cli/index.js",
+    "web": "cd web && node server.js",
+    "web:dev": "cd web && npx nodemon server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
