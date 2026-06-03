@@ -4,7 +4,7 @@ const GameEngine = require("../lib/engine");
 const I18n = require("./i18n");
 
 class GameCLI {
-  constructor(locale = "it") {
+  constructor(locale = "pt_br") {
     this.gameEngine = GameEngine;
     this.i18n = new I18n(locale);
   }

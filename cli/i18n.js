@@ -42,7 +42,7 @@ const translations = {
 };
 
 class I18n {
-  constructor(locale = "it") {
+  constructor(locale = "pt_br") {
     this.locale = locale;
   }
 
